@@ -112,9 +112,11 @@ export default function Header() {
           </div>
           <IconButton className={classes.cartIcon}>
             <ShoppingCartOutlinedIcon />
+            <Typography>Cart</Typography>
           </IconButton>
           <IconButton className={classes.accountIcon}>
             <AccountCircleOutlinedIcon />
+            <Typography>Account</Typography>
           </IconButton>
         </Toolbar>
       </AppBar>
