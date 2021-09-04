@@ -47,7 +47,7 @@ export default function DisplayCard() {
       </CardActionArea>
       <CardActions>
         <Button size="small" className={classes.buttons}>
-          Add To Cart
+          + Add To Cart
         </Button>
         <Button size="small" className={classes.buttons}>
           Buy Now
