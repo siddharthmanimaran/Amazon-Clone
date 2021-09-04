@@ -7,6 +7,8 @@ import InputBase from "@material-ui/core/InputBase";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +16,11 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: "black",
-    // margin: -8 - 8 - 8,
+    color: "gold",
+    marginLeft: -8,
+    marginTop: -8,
+    // marginRight: -8,
+    width: "102%",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -65,6 +71,12 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  cartIcon: {
+    color: "gold",
+  },
+  accountIcon: {
+    color: "gold",
+  },
 }));
 
 export default function Header() {
@@ -86,9 +98,6 @@ export default function Header() {
             Amazon Clone
           </Typography>
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
             <InputBase
               placeholder="Search…"
               classes={{
@@ -97,7 +106,16 @@ export default function Header() {
               }}
               inputProps={{ "aria-label": "search" }}
             />
+            <IconButton className={classes.searchButton}>
+              <SearchIcon />
+            </IconButton>
           </div>
+          <IconButton className={classes.cartIcon}>
+            <ShoppingCartOutlinedIcon />
+          </IconButton>
+          <IconButton className={classes.accountIcon}>
+            <AccountCircleOutlinedIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>
