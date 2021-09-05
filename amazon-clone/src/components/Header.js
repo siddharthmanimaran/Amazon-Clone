@@ -13,6 +13,7 @@ import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined"
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    // position: "absolute",
   },
   appBar: {
     backgroundColor: "black",
@@ -84,7 +85,7 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar className={classes.appBar} position="static">
+      <AppBar className={classes.appBar} position="fixed">
         <Toolbar>
           <IconButton
             edge="start"
