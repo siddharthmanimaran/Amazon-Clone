@@ -5,11 +5,34 @@
   flex-direction: row;
   background-color: black;
   margin-top: 56px;
+  color: gold;
+  text-decoration: none;
 }
 
 .item {
   background-color: black;
   /* width: 100px; */
-  max-width: 200px;
+  max-width: 250px;
   margin: 10px;
+  /* padding: -30px; */
+  color: gold;
+}
+
+/* background-color: gold; */
+/* color: white; */
+/* justify-content: center; */
+/* color: gold; */
+
+.buttonsArea {
+  background-color: gold;
+  padding-left: 20px;
+  /* color: white; */
+}
+.cardContent {
+  background-color: black;
+  color: gold;
+}
+
+.link {
+  text-decoration: none;
 }
