@@ -1,6 +1,6 @@
 import React from "react";
-import data from "./data";
-import Product from "./components/Product";
+// import data from "./data";
+// import Product from "./components/Product";
 import HomePage from "./Pages/HomePage";
 import ProductPage from "./Pages/ProductPage";
 import { BrowserRouter, Route } from "react-router-dom";
