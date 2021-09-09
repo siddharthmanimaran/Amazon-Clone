@@ -156,13 +156,13 @@ img.large {
 .success {
   color: green;
 }
-.error {
+.danger {
   color: red;
 }
 .alert {
   padding: 1rem;
   border: 0.1rem solid transparent;
-  border: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .alert-info {
