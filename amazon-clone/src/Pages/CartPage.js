@@ -1,5 +1,4 @@
 import React from "react";
-// import data from "../data";
 
 export default function CartPage(props) {
   const productId = props.match.params.id;

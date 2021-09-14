@@ -1,10 +1,9 @@
 import React from "react";
-// import data from "./data";
-// import Product from "./components/Product";
 import HomePage from "./Pages/HomePage";
 import ProductPage from "./Pages/ProductPage";
 import CartPage from "./Pages/CartPage";
 import { BrowserRouter, Route } from "react-router-dom";
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +20,7 @@ function App() {
           </div>
         </header>
         <main>
-          <Route name="/cart/:id" component={CartPage}></Route>
+          <Route name="/cart/:id?" component={CartPage}></Route>
           <Route path="/product/:id" component={ProductPage}></Route>
           <Route path="/" component={HomePage} exact></Route>
         </main>
