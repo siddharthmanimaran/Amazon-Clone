@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import data from "../data";
 import Rating from "../components/Rating";
 import { Link } from "react-router-dom";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
-export default function ProductPage(props) {
+function ProductPage(props) {
+  const [qty, setQty] = useState(1);
+  const productId = props.match.params.id;
+  function addToCart(props) {
+    props.history.push(`/cart/${productId}?qty={qty}`);
+  }
   const product = data.products.find((x) => x._id === props.match.params.id);
   if (!product) {
     return <div>Product Not Found!!</div>;
@@ -48,9 +55,32 @@ export default function ProductPage(props) {
                   </div>
                 </div>
               </li>
-              <li>
-                <button className="primary block">Add To Cart</button>
-              </li>
+              {product.countInStock > 0 && (
+                <>
+                  <li>
+                    <div className="row">
+                      <div>Qty</div>
+                      <div style={{ color: "red" }}>
+                        <Select
+                          value={qty}
+                          onChange={(e) => setQty(e.target.value)}
+                        >
+                          {[...Array(product.countInStock).keys()].map((x) => (
+                            <MenuItem key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <button onClick={addToCart} className="primary block">
+                      Add To Cart
+                    </button>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
@@ -58,3 +88,5 @@ export default function ProductPage(props) {
     </div>
   );
 }
+
+export default ProductPage;
