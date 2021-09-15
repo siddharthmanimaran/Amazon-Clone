@@ -6,7 +6,7 @@ body {
   margin: 0;
   height: 100vh;
   font-size: 16px;
-  /* background-color: black; */
+  background-color: black;
   font-family: Helvetica, Arial, sans-serif;
 
   -webkit-font-smoothing: antialiased;
@@ -26,7 +26,7 @@ body {
 
 header {
   grid-area: header;
-  /* background-color: black; */
+  background-color: black;
   border: 1px solid gold;
 }
 main {
@@ -35,9 +35,9 @@ main {
 }
 footer {
   grid-area: footer;
-  /* background-color: black; */
+  background-color: black;
   color: gold;
-  /* border: 1px solid gold; */
+  border: 1px solid gold;
 }
 .row {
   display: flex;
@@ -82,9 +82,6 @@ ul {
 li {
   margin-top: 1rem;
 }
-input,
-select,
-textarea,
 button {
   padding: 1rem;
   border-radius: 0.5rem;
@@ -93,14 +90,8 @@ button {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-button {
   cursor: pointer;
-  background-color: white;
 }
-input:hover,
-select:hover,
-textarea:hover,
 button:hover {
   border: 0.1rem black solid;
 }
@@ -137,7 +128,7 @@ img.large {
 .card {
   border: 0.1rem gold solid;
   color: gold;
-  /* background-color: black; */
+  background-color: black;
   border-radius: 0.5rem;
   margin: 1rem;
 }
