@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import Product from "../components/Product";
 import axios from "axios";
 import LoadingBox from "../components/LoadingBox";

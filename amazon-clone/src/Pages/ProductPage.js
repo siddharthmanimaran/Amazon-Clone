@@ -48,9 +48,17 @@ export default function ProductPage(props) {
                   </div>
                 </div>
               </li>
-              <li>
-                <button className="primary block">Add To Cart</button>
-              </li>
+              <div>
+                {product.countInStock > 0 ? (
+                  <li>
+                    <a href={`/cart/${product._id}`}>
+                      <button className="primary block">Add To Cart</button>
+                    </a>
+                  </li>
+                ) : (
+                  "none"
+                )}
+              </div>
             </ul>
           </div>
         </div>

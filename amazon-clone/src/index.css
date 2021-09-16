@@ -6,7 +6,7 @@ body {
   margin: 0;
   height: 100vh;
   font-size: 16px;
-  background-color: black;
+  /* background-color: black; */
   font-family: Helvetica, Arial, sans-serif;
 
   -webkit-font-smoothing: antialiased;
@@ -24,18 +24,13 @@ body {
   height: 100%;
 }
 
-header {
-  grid-area: header;
-  background-color: black;
-  border: 1px solid gold;
-}
 main {
   grid-area: main;
   padding: 1rem;
 }
 footer {
   grid-area: footer;
-  background-color: black;
+  /* background-color: black; */
   color: gold;
   border: 1px solid gold;
 }
@@ -54,10 +49,13 @@ footer {
 .col-1 {
   flex: 1 1 25rem;
   color: gold;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 .col-2 {
   flex: 2 1 50rem;
+}
+.min-30 {
+  min-width: 30rem;
 }
 /* Common */
 h1 {
@@ -102,9 +100,14 @@ button.block {
   width: 100%;
 }
 /* Header  */
+header {
+  grid-area: header;
+  background-color: black;
+  border: 1px solid gold;
+}
 header a {
   color: rgb(255, 217, 0);
-  padding: 1rem 0;
+  padding: 1rem;
 }
 a.brand {
   font-size: 3rem;
@@ -117,6 +120,10 @@ a.brand {
 img {
   border-radius: 0.5rem;
 }
+img.small {
+  max-width: 5rem;
+  width: 100%;
+}
 img.medium {
   max-width: 29rem;
   width: 100%;
@@ -128,7 +135,7 @@ img.large {
 .card {
   border: 0.1rem gold solid;
   color: gold;
-  background-color: black;
+  /* background-color: black; */
   border-radius: 0.5rem;
   margin: 1rem;
 }
@@ -167,9 +174,9 @@ img.large {
 
 .alert-info {
   color: blue;
-  background-color: white;
+  /* background-color: white; */
 }
 .alert-danger {
   color: red;
-  background-color: white;
+  /* background-color: white; */
 }
