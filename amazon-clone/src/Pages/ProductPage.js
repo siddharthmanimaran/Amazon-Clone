@@ -2,6 +2,8 @@ import React from "react";
 import data from "../data";
 import Rating from "../components/Rating";
 import { Link } from "react-router-dom";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 export default function ProductPage(props) {
   const product = data.products.find((x) => x._id === props.match.params.id);
@@ -45,6 +47,32 @@ export default function ProductPage(props) {
                     ) : (
                       <span className="danger">Unavailable</span>
                     )}
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="row">
+                  <div>Quantity</div>
+                  <div>
+                    <Select>
+                      {[...Array(product.countInStock).keys()].map((x) => (
+                        <MenuItem key={x + 1} value={x + 1}>
+                          {x + 1}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                    <select
+                      value={product.qty}
+                      // onChange={(e) =>
+                      //   dispatch(addToCart(item.product, Number(e.target.value)))
+                      // }
+                    >
+                      {[...Array(product.countInStock).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                          {x + 1}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
               </li>

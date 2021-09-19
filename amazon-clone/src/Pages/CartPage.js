@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import data from "../data";
 import { Link } from "react-router-dom";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/material/Button";
+import { yellow } from "@mui/material/colors";
 
 export default function CartPage(props) {
   const product = data.products.find((x) => x._id === props.match.params.id);
@@ -8,6 +11,14 @@ export default function CartPage(props) {
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
     : 1;
+  function handleClick() {
+    props.onDelete(props.id);
+  }
+  // const [quantity, setQuantity] = useState();
+  // function handleQty(e) {
+  //   const event = e.target.value;
+  //   setQuantity(event);
+  // }
 
   return (
     <div className="row-top">
@@ -26,12 +37,13 @@ export default function CartPage(props) {
               <div className="min-30">
                 <Link to={`/product/${productId}`}>{product.name}</Link>
               </div>
-              <div>
+              <div className="select">
                 <select
-                  value={product.qty}
-                  // onChange={(e) =>
-                  //   dispatch(addToCart(item.product, Number(e.target.value)))
-                  // }
+                // value={quantity}
+                // onchange={handleQty}
+                // onChange={(e) =>
+                //   dispatch(addToCart(item.product, Number(e.target.value)))
+                // }
                 >
                   {[...Array(product.countInStock).keys()].map((x) => (
                     <option key={x + 1} value={x + 1}>
@@ -40,9 +52,20 @@ export default function CartPage(props) {
                   ))}
                 </select>
               </div>
-              <div>₹{product.price}</div>
+              <div style={{ color: "gold" }}>₹{product.price}</div>
               <div>
-                <button type="button">Delete</button>
+                <Button
+                  variant="outlined"
+                  startIcon={
+                    <DeleteIcon
+                    // sx={{ backgroundColor: yellow[500] }}
+                    />
+                  }
+                  sx={{ backgroundColor: yellow[500] }}
+                  onChange={handleClick}
+                >
+                  Remove
+                </Button>
               </div>
             </div>
           </li>
