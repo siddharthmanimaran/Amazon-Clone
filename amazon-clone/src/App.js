@@ -4,6 +4,8 @@ import React from "react";
 import HomePage from "./Pages/HomePage";
 import ProductPage from "./Pages/ProductPage";
 import CartPage from "./Pages/CartPage";
+import LogInPage from "./Pages/LogInPage";
+import SignUpPage from "./Pages/SignUpPage";
 import { BrowserRouter, Route } from "react-router-dom";
 function App() {
   return (
@@ -17,10 +19,12 @@ function App() {
           </div>
           <div>
             <a href="/cart">Cart</a>
-            <a href="/signIn">Sign In</a>
+            <a href="/LogIn">Log In</a>
           </div>
         </header>
         <main>
+          <Route path="/SignUp" component={SignUpPage} />
+          <Route path="/LogIn" component={LogInPage} />
           <Route path="/cart/:id" component={CartPage}></Route>
           <Route path="/product/:id" component={ProductPage}></Route>
           <Route path="/" component={HomePage} exact></Route>

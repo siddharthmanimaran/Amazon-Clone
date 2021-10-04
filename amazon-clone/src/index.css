@@ -6,7 +6,7 @@ body {
   margin: 0;
   height: 100vh;
   font-size: 16px;
-  background-color: black;
+  /* background-color: black; */
   font-family: Helvetica, Arial, sans-serif;
 
   -webkit-font-smoothing: antialiased;
@@ -30,7 +30,7 @@ main {
 }
 footer {
   grid-area: footer;
-  background-color: black;
+  /* background-color: black; */
   color: gold;
   border: 1px solid gold;
 }
@@ -81,7 +81,7 @@ ul {
 li {
   margin-top: 1rem;
 }
-button {
+/* button {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 0.1rem solid gold;
@@ -90,7 +90,7 @@ button {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: pointer;
-}
+} */
 button:hover {
   border: 0.1rem black solid;
 }
@@ -113,7 +113,7 @@ button.block {
 /* Header  */
 header {
   grid-area: header;
-  background-color: black;
+  /* background-color: black; */
   border: 1px solid gold;
 }
 header a {
@@ -193,4 +193,47 @@ img.large {
 }
 .select {
   color: gold;
+}
+
+/* logIn/SignUp  */
+form {
+  position: relative;
+  width: 480px;
+  margin: 30px auto 20px auto;
+  background: #eee;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px black;
+}
+form input,
+form textarea {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+  /* font-family: inherit; */
+  /* resize: none; */
+}
+.formSubmit {
+  margin-top: 15px;
+  height: 30px;
+  width: 30rem;
+  /* font-family: "McLaren", cursive; */
+  /* font-weight: 200; */
+  /* color: #fff; */
+  border: none;
+  background-color: #f5ba13;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  outline: none;
+  cursor: pointer;
+  border-radius: 7px;
+  margin-left: 18%;
+  /* left: 50%; */
+  /* top: 50%; */
+}
+
+.link {
+  text-align: center;
+  margin-top: inherit;
 }
