@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-// import useHistory from "react-r"
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -12,9 +11,6 @@ export default function SignUpPage() {
     email: "",
     password: "",
   });
-  // useEffect(() =>{
-
-  // })
 
   function handleUser(event) {
     const { name, value } = event.target;
