@@ -5,12 +5,12 @@ let Products = new Schema({
   name: { type: String },
   category: { type: String },
   image: { type: String },
-  price: { type: Number },
-  countInStock: { type: Number },
+  price: { type: String },
+  countInStock: { type: String },
   brand: { type: String },
-  rating: { type: mongoose.Schema.Types.Decimal128 },
+  rating: { type: String },
   // { type: Number },
-  numReviews: { type: Number },
+  numReviews: { type: String },
   description: { type: String },
 });
 

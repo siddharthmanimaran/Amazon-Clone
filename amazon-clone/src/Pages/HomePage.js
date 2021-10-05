@@ -13,7 +13,10 @@ export default function HomePage() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get("./api/products");
+        const { data } = await axios.get(
+          "mongodb://127.0.0.1:27017/Amazon/product"
+        );
+        console.log(data);
         setLoading(false);
         setProducts(data);
       } catch (err) {

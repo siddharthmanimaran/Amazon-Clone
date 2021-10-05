@@ -3,13 +3,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-
 const AmazonRoutes = express.Router();
 const PORT = process.env.PORT || 4000;
 const bcrypt = require("bcrypt");
 
-const Product = require("./Products.model");
-const User = require("./Users.model");
+const Product = require("./models/Products.model");
+const User = require("./models/Users.model");
 
 app.use(bodyParser.json());
 app.use(
@@ -22,7 +21,6 @@ app.use(cors());
 mongoose.connect("mongodb://127.0.0.1:27017/Amazon", {
   useNewUrlParser: true,
 });
-
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
@@ -60,6 +58,24 @@ AmazonRoutes.post("/Products", async (req, res, next) => {
   } catch (err) {
     console.log(err);
     return next(err);
+  }
+});
+
+AmazonRoutes.get("/product", async (req, res) => {
+  try {
+    Product.find({}, (err, data) => {
+      console.log("product found-->", data);
+      if (err) {
+        console.log(err);
+      }
+      if (data.length) {
+        res.json({ success: true, results: data });
+      } else {
+        res.json({ success: false, results: data });
+      }
+    });
+  } catch (err) {
+    console.log("error in data-->", err);
   }
 });
 
@@ -131,6 +147,7 @@ AmazonRoutes.route("/logIn").post((req, res) => {
 //   res.send("server is started");
 // });
 app.use("/Amazon", AmazonRoutes);
+app.use("/product", AmazonRoutes);
 app.use("/Products", AmazonRoutes);
 app.use("/signUp", AmazonRoutes);
 app.use("/logIn", AmazonRoutes);
