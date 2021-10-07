@@ -9,6 +9,7 @@ const bcrypt = require("bcrypt");
 
 const Product = require("./models/Products.model");
 const User = require("./models/Users.model");
+const Order = require("./models/Orders.model");
 
 app.use(bodyParser.json());
 app.use(
@@ -69,9 +70,9 @@ AmazonRoutes.get("/product", async (req, res) => {
         console.log(err);
       }
       if (data.length) {
-        res.json({ success: true, results: data });
+        res.json({ success: true, result: data });
       } else {
-        res.json({ success: false, results: data });
+        res.json({ success: false, message: "Product not found" });
       }
     });
   } catch (err) {
@@ -139,16 +140,64 @@ AmazonRoutes.route("/logIn").post((req, res) => {
   });
 });
 
-// app.get("/api/products", (req, res) => {
-//   res.send(data.products);
+AmazonRoutes.get("/oneProduct/:id", async (req, res) => {
+  let id = req.params.id;
+  try {
+    Product.find({ _id: mongoose.Types.ObjectId(id) }, (err, data) => {
+      if (data.length) {
+        res.json({ success: true, result: data });
+      } else {
+        res.json({ success: false, message: "Product not found" });
+      }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+AmazonRoutes.route("/orders/:productId/:userId").post(function (req, res) {
+  //console.log("added content--->", req.body);
+  //console.log("id", req.params.userId);
+  let orders = new Order();
+  orders.name = req.body.name;
+  orders.qty = req.body.qty;
+  orders.image = req.body.image;
+  orders.price = req.body.price;
+  orders.productId = req.params.productId;
+  orders.userId = req.params.userId;
+  orders
+    .save()
+    .then((x) => {
+      console.log(x);
+      res.status(200).json({ orders: "record added successfully" });
+    })
+    .catch((err) => {
+      res.status(400).send("adding new record failed");
+    });
+});
+
+// AmazonRoutes.post("/orders/:productId/userId", async (req, res) => {
+//   console.log("-->", req.body);
+//   console.log("id-->", req.params);
+
+//   try {
+//     const { name, qty, image, price } = req.body;
+//     const { productId, userId } = req.params;
+//     const order = new Order({ name, qty, image, price, productId, userId });
+//     const ret = await order.save();
+//     res.json(ret);
+//     console.log("order saved");
+//   } catch (err) {
+//     console.log(err);
+//     return next(err);
+//   }
 // });
 
-// app.get("/", (req, res) => {
-//   res.send("server is started");
-// });
 app.use("/Amazon", AmazonRoutes);
+app.use("/oneProduct/:id", AmazonRoutes);
 app.use("/product", AmazonRoutes);
 app.use("/Products", AmazonRoutes);
 app.use("/signUp", AmazonRoutes);
 app.use("/logIn", AmazonRoutes);
+app.use("/orders/:productId/:userId", AmazonRoutes);
 app.listen(PORT, console.log(`Server started at port ${PORT}`));

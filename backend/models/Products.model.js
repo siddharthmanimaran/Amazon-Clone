@@ -6,10 +6,10 @@ let Products = new Schema({
   category: { type: String },
   image: { type: String },
   price: { type: String },
-  countInStock: { type: String },
+  countInStock: { type: Number },
   brand: { type: String },
   rating: { type: String },
-  // { type: Number },
+
   numReviews: { type: String },
   description: { type: String },
 });

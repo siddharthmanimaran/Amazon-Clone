@@ -24,7 +24,7 @@ export default function LogInPage() {
       const res = await axios.post("http://localhost:4000/Amazon/logIn", user);
       if (res.data.success) {
         alert("Logged In");
-        history.push("/");
+        history.push(`/HomePage/${res.data.userDetails._id}`);
       } else {
         alert(res.data.message);
       }
@@ -51,7 +51,7 @@ export default function LogInPage() {
           value={user.userName}
           onChange={handleChange}
         />
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           name="password"

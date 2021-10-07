@@ -13,7 +13,7 @@ const data = {
       description: "high quality product",
     },
     {
-      _id: "2",
+      _id: "615b2b71bde04bcf54791cf4",
       name: "Adidas Fit Shirt",
       category: "Shirts",
       image: "https://picsum.photos/680/830",

@@ -6,8 +6,9 @@ body {
   margin: 0;
   height: 100vh;
   font-size: 16px;
-  /* background-color: black; */
+  background-color: black;
   font-family: Helvetica, Arial, sans-serif;
+  /* font-family: Courier New, monospace; */
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,7 +33,7 @@ footer {
   grid-area: footer;
   /* background-color: black; */
   color: gold;
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
   box-shadow: 0 0 10px 0 rgb(255, 217, 0);
 }
 .row {
@@ -54,6 +55,9 @@ footer {
 }
 .col-2 {
   flex: 2 1 50rem;
+}
+.details {
+  margin: 5rem;
 }
 .min-30 {
   min-width: 30rem;
@@ -82,24 +86,29 @@ ul {
 li {
   margin-top: 1rem;
 }
-/* button {
+button {
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 0.1rem solid gold;
+  border: none;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: pointer;
-} */
+}
 button:hover {
-  border: 0.1rem black solid;
+  /* border: 0.1rem black solid; */
+  background-color: black;
+  color: white;
 }
 button.primary {
   background-color: gold;
 }
 button.block {
   width: 100%;
+}
+button.delete {
+  color: gold;
 }
 .muiButton {
   padding: 1rem;
@@ -110,21 +119,26 @@ button.block {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: pointer;
+  color: black;
 }
+
 /* Header  */
 header {
   grid-area: header;
   /* background-color: black; */
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
   box-shadow: 0 0 10px 0 rgb(255, 217, 0);
 }
 header a {
   color: rgb(255, 217, 0);
+  /* text-shadow: 0 0 10px 0 rgb(255, 217, 0); */
+  /* text-shadow: 2px 2px rgb(255, 217, 0); */
   padding: 1rem;
 }
 a.brand {
   font-size: 3rem;
   font-weight: bold;
+  /* text-shadow: rgb(255, 217, 0); */
 }
 .row.center {
   justify-content: center;
@@ -146,11 +160,12 @@ img.large {
 }
 /* Card */
 .card {
-  border: 0.1rem gold solid;
+  /* border: 0.1rem gold solid; */
   color: gold;
   /* background-color: black; */
   border-radius: 0.5rem;
-  margin: 1rem;
+  margin: 5rem;
+  box-shadow: 0 0 10px 0 rgb(255, 217, 0);
 }
 .card-body {
   padding: 1rem;
@@ -202,10 +217,12 @@ form {
   position: relative;
   width: 480px;
   margin: 30px auto 20px auto;
-  background: #eee;
+  /* background: #eee; */
+  color: gold;
   padding: 15px;
   border-radius: 7px;
-  box-shadow: 0 1px 5px black;
+  /* box-shadow: 0 1px 5px black; */
+  box-shadow: 0 0 10px 0 rgb(255, 217, 0);
 }
 form input,
 form textarea {
@@ -214,6 +231,8 @@ form textarea {
   padding: 4px;
   outline: none;
   font-size: 1.2em;
+  /* background-color: #020202; */
+  /* color: #f5ba13; */
   /* font-family: inherit; */
   /* resize: none; */
 }
@@ -226,7 +245,8 @@ form textarea {
   /* color: #fff; */
   border: none;
   background-color: #f5ba13;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3); */
+  box-shadow: 0 0 10px 0 rgb(255, 217, 0);
   outline: none;
   cursor: pointer;
   border-radius: 7px;
