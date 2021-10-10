@@ -3,6 +3,7 @@ import Product from "../components/Product";
 import axios from "axios";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+// import Rating from "../components/Rating";
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
@@ -18,7 +19,9 @@ export default function HomePage() {
         if (res.data.success) {
           // console.log(res.data);
           setLoading(false);
-          setProducts(res.data.result);
+          const data = res.data.result;
+          setProducts(data);
+          console.log(data);
         } else {
           alert(res.data.message);
         }
@@ -41,3 +44,51 @@ export default function HomePage() {
     </div>
   );
 }
+
+// function HomePage() {
+//   const [product, setProduct] = useState(null);
+
+//   useEffect(() => {
+//     const getProduct = async () => {
+//       try {
+//         const res = await axios.get("http://localhost:4000/Amazon/product");
+//         const data = res.data.result;
+//         console.log(data);
+//         setProduct(data);
+//       } catch {}
+//     };
+//     getProduct();
+//   }, []);
+
+//   return (
+//     <div>
+//       {product && (
+//         <div className="row center">
+//           {product.map((productsData, index) => (
+//             <div key={productsData._id} className="card">
+//               <a href={`/product/${productsData._id}`}>
+//                 <img
+//                   className="medium"
+//                   src={productsData.image}
+//                   alt={productsData.name}
+//                 />
+//               </a>
+//               <div className="card-body">
+//                 <a href={`/product/${productsData._id}`}>
+//                   <h2 className="product-name">{productsData.name}</h2>
+//                 </a>
+//                 <Rating
+//                   rating={productsData.rating}
+//                   numReviews={productsData.numReviews}
+//                 />
+//                 <div className="price">₹{productsData.price}</div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default HomePage;

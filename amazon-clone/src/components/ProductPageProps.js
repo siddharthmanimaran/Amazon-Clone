@@ -1,14 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import Rating from "./Rating";
-import { Link } from "react-router-dom";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
 
 export default function ProductPageProps(props) {
   const { product } = props;
+
+  let userDetails = JSON.parse(localStorage.getItem("userLogIn"));
+  const [item, setItems] = useState({
+    name: "",
+    image: "",
+    price: "",
+    userId: "",
+    productId: "",
+  });
+  console.log("item--->", item);
+  const history = useHistory();
+
+  console.log("usrrId--->", userDetails._id);
+  console.log("ProductPageProps" + JSON.stringify(product));
+
+  function Clickme(event) {
+    event.preventDefault();
+    setItems({
+      name: product.name,
+      image: product.image,
+      price: product.price,
+      userId: userDetails._id,
+      productId: product._id,
+    });
+
+    axios
+      .post(`http://localhost:4000/Amazon/orders/${product._id}`, item)
+      .then((res) => {
+        if (res.status === 200) {
+          alert("added to cart");
+          history.push("/HomePage");
+        } else {
+          alert("add something");
+        }
+      })
+      .catch((err) => {
+        alert("type Something");
+        console.log(err);
+      });
+    // setItems("");
+  }
+
+  // function Quantity(e) {}
   return (
     <div>
-      <Link to="/"> Back to Home</Link>
+      <Link to="/HomePage"> Back to Home</Link>
       <div className="row top">
         <div className="col-2">
           <img src={product.image} alt={product.name}></img>
@@ -57,27 +99,35 @@ export default function ProductPageProps(props) {
                         </MenuItem>
                       ))}
                     </Select> */}
-                    <select
-                      value={product.qty}
+                    {/* <select
+                      value={item.qty}
                       // onChange={(e) =>
                       //   dispatch(addToCart(item.product, Number(e.target.value)))
                       // }
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        product.qty = value;
+                        // setItems(product.qty);
+                        // {item.qty,Number(value)}
+                      }}
                     >
                       {[...Array(product.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
                           {x + 1}
                         </option>
                       ))}
-                    </select>
+                    </select> */}
                   </div>
                 </div>
               </li>
               <div>
                 {product.countInStock > 0 ? (
                   <li>
-                    <a href={`/cart/${product._id}`}>
-                      <button className="primary block">Add To Cart</button>
-                    </a>
+                    {/* <a href={`/LogIn/:${product._id}`}> */}
+                    <button className="primary block" onClick={Clickme}>
+                      Add To Cart
+                    </button>
+                    {/* </a> */}
                   </li>
                 ) : (
                   "none"

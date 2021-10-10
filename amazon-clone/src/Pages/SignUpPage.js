@@ -28,7 +28,7 @@ export default function SignUpPage() {
       await axios.post("http://localhost:4000/Amazon/signUp", user);
       // console.log(res);
       alert("Sign Up Success");
-      history.push("/LogIn");
+      history.push("/");
     } catch (err) {
       console.log(err);
       alert("Sign Up Failure");
@@ -84,7 +84,7 @@ export default function SignUpPage() {
           value={user.password}
         />
 
-        <Link to="/LogIn">
+        <Link to="/">
           <p style={{ textAlign: "right" }}>Already have Account?</p>
         </Link>
         <button

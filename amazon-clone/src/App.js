@@ -24,10 +24,10 @@ function App() {
         </header>
         <main>
           <Route path="/SignUp" component={SignUpPage} />
-          <Route path="/LogIn" component={LogInPage} />
+          <Route path="/HomePage" component={HomePage} />
           <Route path="/cart/:id" component={CartPage}></Route>
-          <Route path="/product/:id" component={ProductPage}></Route>
-          <Route path="/" component={HomePage} exact></Route>
+          <Route path="/product/:pId" component={ProductPage}></Route>
+          <Route path="/" component={LogInPage} exact></Route>
         </main>
         <footer className="row center">All right reserved.</footer>
       </div>

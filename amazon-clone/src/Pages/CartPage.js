@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 // import data from "../data";
-import { Link } from "react-router-dom";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Button from "@mui/material/Button";
-import { yellow } from "@mui/material/colors";
+// import { Link } from "react-router-dom";
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import Button from "@mui/material/Button";
+// import { yellow } from "@mui/material/colors";
 import axios from "axios";
 import CartPageProps from "../components/CartPageProps";
 
@@ -14,7 +14,7 @@ export default function CartPage(props) {
   // const qty = props.location.search
   //   ? Number(props.location.search.split("=")[1])
   //   : 1;
-  
+
   // const [quantity, setQuantity] = useState();
   // function handleQty(e) {
   //   const event = e.target.value;

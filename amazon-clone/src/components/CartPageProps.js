@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // import data from "../data";
 import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Button from "@mui/material/Button";
-import { yellow } from "@mui/material/colors";
-import axios from "axios";
+// import Button from "@mui/material/Button";
+// import { yellow } from "@mui/material/colors";
+// import axios from "axios";
 // import { yellow } from "@mui/material/colors";
 import IconButton from "@mui/material/IconButton";
 
 export default function CartPageProps(props) {
-    const[cart,setCart] =useState()
+  // const[cart,setCart] =useState()
   const { product } = props;
   function handleClick() {
     props.onDelete(props.id);

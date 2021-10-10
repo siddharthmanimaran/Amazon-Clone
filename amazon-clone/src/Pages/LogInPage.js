@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-export default function LogInPage() {
+export default function LogInPage(props) {
   const history = useHistory();
   const [user, setUser] = useState({
     userName: "",
     password: "",
+    userId: "",
   });
+  // const productId = props.match.params.productId;
+  // const products = props.match.params;
+  // // const userId = props.match.params.userId;
+  // // console.log("user id-->", userId);
+  // console.log("product id-->", JSON.stringify(props));
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -24,7 +30,18 @@ export default function LogInPage() {
       const res = await axios.post("http://localhost:4000/Amazon/logIn", user);
       if (res.data.success) {
         alert("Logged In");
-        history.push(`/HomePage/${res.data.userDetails._id}`);
+        localStorage.setItem("userLogIn", JSON.stringify(res.data.userDetails));
+        let userDetails = JSON.parse(localStorage.getItem("userLogIn"));
+        console.log(userDetails.email);
+        // const userName=
+        // console.log("localStorage--->", JSON.parse(userDetails));
+        // console.log("Params" + JSON.stringify(props));
+        // if (userDetails.length) {
+        //   history.push(`/cart/${props.location.pathname.split("/")[2]}`);
+        // } else {
+        //   alert("Please Log In");
+        // }
+        history.push(`/HomePage`);
       } else {
         alert(res.data.message);
       }
