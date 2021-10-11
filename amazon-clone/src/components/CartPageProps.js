@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function CartPageProps(props) {
   // const[cart,setCart] =useState()
@@ -29,7 +30,7 @@ export default function CartPageProps(props) {
               <div className="min-30">
                 <Link to={`/product/${product.productId}`}>{product.name}</Link>
               </div>
-              <div className="select">
+              {/* <div className="select">
                 <select
                 // value={quantity}
                 // onchange={handleQty}
@@ -43,17 +44,19 @@ export default function CartPageProps(props) {
                     </option>
                   ))}
                 </select>
-              </div>
+              </div> */}
               <div style={{ color: "gold" }}>₹{product.price}</div>
               <div>
-                <IconButton
-                  aria-label="delete"
-                  size="large"
-                  onClick={handleClick}
-                  className="button delete"
-                >
-                  <DeleteIcon fontSize="inherit" />
-                </IconButton>
+                <Tooltip title="Delete">
+                  <IconButton
+                    aria-label="delete"
+                    size="large"
+                    onClick={handleClick}
+                    className="button delete"
+                  >
+                    <DeleteIcon fontSize="large" />
+                  </IconButton>
+                </Tooltip>
               </div>
             </div>
           </li>
@@ -63,11 +66,11 @@ export default function CartPageProps(props) {
         <div className="card card-body">
           <ul>
             <li>
-              {/* <h2> */}
-              {/* Total */}
-              {/* ({product.reduce((a, c) => a + c.qty, 0)}items):₹
+              <h2>
+                Total
+                {/* ({product.reduce((a, c) => a + c.qty, 0)}items):₹
                 {product.reduce((a, c) => a + c.price * c.qty, 0)} */}
-              {/* </h2> */}
+              </h2>
             </li>
 
             <li>

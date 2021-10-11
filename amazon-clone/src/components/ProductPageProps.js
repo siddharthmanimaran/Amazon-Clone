@@ -13,38 +13,26 @@ export default function ProductPageProps(props) {
     name: "",
     image: "",
     price: "",
+    qty: "",
     userId: "",
     productId: "",
   });
   console.log("item--->", item);
   const history = useHistory();
+  const [quantity, setQuantity] = useState();
 
-  console.log("userId--->", userDetails._id);
-  console.log("ProductPageProps" + JSON.stringify(product));
-
+  console.log(quantity);
   useEffect(() => {
     setItems({
       name: product.name,
       image: product.image,
       price: product.price,
+      qty: quantity,
       userId: userDetails._id,
       productId: product._id,
     });
-  }, []);
+  }, [quantity]);
   function addToCart(event) {
-    // event.preventDefault();
-    console.log("products details", product);
-    // setItems({
-    //   name: product.name,
-    //   image: product.image,
-    //   price: product.price,
-    //   userId: userDetails._id,
-    //   productId: product._id,
-    // });
-
-    // if (product_id != "") {
-    // } else {
-    // }
     axios
       .post(`http://localhost:4000/Amazon/orders/${product._id}`, item)
       .then((res) => {
@@ -62,7 +50,6 @@ export default function ProductPageProps(props) {
     // setItems("");
   }
 
-  // function Quantity(e) {}
   return (
     <div>
       <Link to="/HomePage">
@@ -83,7 +70,7 @@ export default function ProductPageProps(props) {
             <li>
               <Rating rating={product.rating} numReviews={product.numReviews} />
             </li>
-            <li>price: {product.price}</li>
+            <li>price: {product.price * quantity}</li>
             <li>Description: {product.description}</li>
           </ul>
         </div>
@@ -112,31 +99,16 @@ export default function ProductPageProps(props) {
                 <div className="row">
                   <div>Quantity</div>
                   <div>
-                    {/* <Select>
-                      {[...Array(product.countInStock).keys()].map((x) => (
-                        <MenuItem key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </MenuItem>
-                      ))}
-                    </Select> */}
-                    {/* <select
-                      value={item.qty}
-                      // onChange={(e) =>
-                      //   dispatch(addToCart(item.product, Number(e.target.value)))
-                      // }
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        product.qty = value;
-                        // setItems(product.qty);
-                        // {item.qty,Number(value)}
-                      }}
+                    <select
+                      value={quantity}
+                      onChange={(e) => setQuantity(e.target.value)}
                     >
                       {[...Array(product.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
                           {x + 1}
                         </option>
                       ))}
-                    </select> */}
+                    </select>
                   </div>
                 </div>
               </li>

@@ -164,8 +164,8 @@ AmazonRoutes.route("/orders/:productId").post(function (req, res) {
   //console.log("id", req.params.userId);
   let orders = new Order();
   orders.name = req.body.name;
-  // orders.qty = req.body.qty;
   orders.image = req.body.image;
+  orders.qty = req.body.qty;
   orders.price = req.body.price;
   orders.userId = req.body.userId;
   orders.productId = req.params.productId;
