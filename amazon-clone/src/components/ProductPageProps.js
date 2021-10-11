@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Rating from "./Rating";
 import { Link, useHistory } from "react-router-dom";
+import IconButton from "@mui/material/IconButton";
 import axios from "axios";
+import KeyboardBackspaceRoundedIcon from "@mui/icons-material/KeyboardBackspaceRounded";
 
 export default function ProductPageProps(props) {
   const { product } = props;
@@ -17,11 +19,10 @@ export default function ProductPageProps(props) {
   console.log("item--->", item);
   const history = useHistory();
 
-  console.log("usrrId--->", userDetails._id);
+  console.log("userId--->", userDetails._id);
   console.log("ProductPageProps" + JSON.stringify(product));
 
-  function Clickme(event) {
-    event.preventDefault();
+  useEffect(() => {
     setItems({
       name: product.name,
       image: product.image,
@@ -29,7 +30,21 @@ export default function ProductPageProps(props) {
       userId: userDetails._id,
       productId: product._id,
     });
+  }, []);
+  function addToCart(event) {
+    // event.preventDefault();
+    console.log("products details", product);
+    // setItems({
+    //   name: product.name,
+    //   image: product.image,
+    //   price: product.price,
+    //   userId: userDetails._id,
+    //   productId: product._id,
+    // });
 
+    // if (product_id != "") {
+    // } else {
+    // }
     axios
       .post(`http://localhost:4000/Amazon/orders/${product._id}`, item)
       .then((res) => {
@@ -50,7 +65,12 @@ export default function ProductPageProps(props) {
   // function Quantity(e) {}
   return (
     <div>
-      <Link to="/HomePage"> Back to Home</Link>
+      <Link to="/HomePage">
+        {" "}
+        <IconButton>
+          <KeyboardBackspaceRoundedIcon fontSize="large" />
+        </IconButton>
+      </Link>
       <div className="row top">
         <div className="col-2">
           <img src={product.image} alt={product.name}></img>
@@ -123,11 +143,9 @@ export default function ProductPageProps(props) {
               <div>
                 {product.countInStock > 0 ? (
                   <li>
-                    {/* <a href={`/LogIn/:${product._id}`}> */}
-                    <button className="primary block" onClick={Clickme}>
+                    <button className="primary block" onClick={addToCart}>
                       Add To Cart
                     </button>
-                    {/* </a> */}
                   </li>
                 ) : (
                   "none"

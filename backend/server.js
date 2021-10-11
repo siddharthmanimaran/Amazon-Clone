@@ -55,7 +55,7 @@ AmazonRoutes.post("/Products", async (req, res, next) => {
     });
     const ret = await product.save();
     res.json(ret);
-    console.log("added");
+    // console.log("added");
   } catch (err) {
     console.log(err);
     return next(err);
@@ -160,7 +160,7 @@ AmazonRoutes.get("/oneProduct/:id", async (req, res) => {
 });
 
 AmazonRoutes.route("/orders/:productId").post(function (req, res) {
-  //console.log("added content--->", req.body);
+  console.log("added content--->", req.body);
   //console.log("id", req.params.userId);
   let orders = new Order();
   orders.name = req.body.name;
@@ -173,7 +173,7 @@ AmazonRoutes.route("/orders/:productId").post(function (req, res) {
   orders
     .save()
     .then((x) => {
-      console.log(x);
+      // console.log(x);
       res.status(200).json({ orders: "record added successfully" });
     })
     .catch((err) => {

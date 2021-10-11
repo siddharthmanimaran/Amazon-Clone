@@ -7,10 +7,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CartPageProps from "../components/CartPageProps";
 
-export default function CartPage(props) {
+export default function CartPage() {
   const [product, setProduct] = useState([]);
   // const product = data.products.find((x) => x._id === props.match.params.id);
-  const products = props.match.params.id;
+  // const products = props.match.params.id;
   // const qty = props.location.search
   //   ? Number(props.location.search.split("=")[1])
   //   : 1;
@@ -21,13 +21,15 @@ export default function CartPage(props) {
   //   setQuantity(event);
   // }
 
+  let userDetails = JSON.parse(localStorage.getItem("userLogIn"));
+  const userId = userDetails._id;
+  console.log("userId--->", userId);
   useEffect(() => {
-    const fetchData = async () => {
+    const cartItems = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4000/Amazon/oneProduct/${products}`
+          `http://localhost:4000/Amazon/orders/${userId}`
         );
-
         if (res.data.success) {
           setProduct(res.data.result);
           console.log(res.data.result);
@@ -35,11 +37,12 @@ export default function CartPage(props) {
           alert(res.data.message);
         }
       } catch (err) {
-        alert("no data");
+        console.log(err);
       }
     };
-    fetchData();
-  }, [products]);
+    cartItems();
+  }, [userId]);
+
   return (
     <>
       {product.map((data) => (

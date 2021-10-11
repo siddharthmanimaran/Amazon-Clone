@@ -1,4 +1,5 @@
 import React from "react";
+import AppBar from "./components/AppBar";
 // import data from "./data";
 // import Product from "./components/Product";
 import HomePage from "./Pages/HomePage";
@@ -11,17 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="grid-container">
-        <header className="row">
-          <div>
-            <a className="brand" href="/">
-              Amazon Clone
-            </a>
-          </div>
-          <div>
-            <a href="/cart">Cart</a>
-            <a href="/LogIn">Log In</a>
-          </div>
-        </header>
+        <AppBar />
         <main>
           <Route path="/SignUp" component={SignUpPage} />
           <Route path="/HomePage" component={HomePage} />
