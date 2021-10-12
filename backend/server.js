@@ -7,6 +7,8 @@ const AmazonRoutes = express.Router();
 const PORT = process.env.PORT || 4000;
 const bcrypt = require("bcrypt");
 
+const nodemailer = require("nodemailer");
+
 const Product = require("./models/Products.model");
 const User = require("./models/Users.model");
 const Order = require("./models/Orders.model");
@@ -212,6 +214,29 @@ AmazonRoutes.route("/delete/:id").delete((req, res) => {
       res.status(400).send("fail to delete");
     });
 });
+
+// let mailTransporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "sid28071998@gmail.com",
+//     pass: "28071998",
+//   },
+// });
+// let mailDetails = {
+//   from: "sid28071998@gmail.com",
+//   to: "sidsid28071998@gmail.com",
+//   subject: "Test mail",
+//   text: "Hello World!!!!!!!!!",
+// };
+
+// mailTransporter.sendMail(mailDetails, function (err, data) {
+//   if (err) {
+//     console.log(err);
+//     console.log("Error Occurs");
+//   } else {
+//     console.log("Email sent successfully");
+//   }
+// });
 
 app.use("/Amazon", AmazonRoutes);
 app.use("/oneProduct/:id", AmazonRoutes);
