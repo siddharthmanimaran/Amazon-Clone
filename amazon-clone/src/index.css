@@ -115,7 +115,7 @@ button.delete {
   border-radius: 0.5rem;
   border: 0.1rem solid gold;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 30px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: pointer;
@@ -259,4 +259,13 @@ form textarea {
 .link {
   text-align: center;
   margin-top: inherit;
+}
+
+/* modal */
+.modalButton {
+  width: 48%;
+  margin-top: 10px;
+  color: black;
+  font-size: 14px;
+  background-color: gold;
 }

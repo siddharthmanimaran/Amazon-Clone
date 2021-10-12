@@ -4,11 +4,35 @@ import { Link, useHistory } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 import KeyboardBackspaceRoundedIcon from "@mui/icons-material/KeyboardBackspaceRounded";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
 
 export default function ProductPageProps(props) {
   const { product } = props;
 
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "black",
+    color: "gold",
+    // border: "2px solid #000",
+    // boxShadow: 24,
+    filter: "drop-shadow(0px 2px 8px gold)",
+    p: 4,
+  };
+
+  const [open, setOpen] = useState(false);
+  function handleOpen() {
+    setOpen(true);
+  }
+  const handleClose = () => setOpen(false);
+
   let userDetails = JSON.parse(localStorage.getItem("userLogIn"));
+  const userId = userDetails._id;
+
   const [item, setItems] = useState({
     name: "",
     image: "",
@@ -35,16 +59,17 @@ export default function ProductPageProps(props) {
       .post(`http://localhost:4000/Amazon/orders/${product._id}`, item)
       .then((res) => {
         if (res.status === 200) {
-          alert("added to cart");
-          history.push("/HomePage");
+          // alert("added to cart");
+          // history.push("/HomePage");
         } else {
           alert("add something");
         }
       })
       .catch((err) => {
-        alert("type Something");
+        // alert("type Something");
         console.log(err);
       });
+    handleOpen();
   }
 
   return (
@@ -67,7 +92,7 @@ export default function ProductPageProps(props) {
             <li>
               <Rating rating={product.rating} numReviews={product.numReviews} />
             </li>
-            <li>price: {product.price * quantity}</li>
+            <li>price: ₹{product.price}</li>
             <li>Description: {product.description}</li>
           </ul>
         </div>
@@ -77,7 +102,7 @@ export default function ProductPageProps(props) {
               <li>
                 <div className="row">
                   <div>Price</div>
-                  <div className="price">₹{product.price}</div>
+                  <div className="price">₹{product.price * quantity}</div>
                 </div>
               </li>
               <li>
@@ -101,8 +126,8 @@ export default function ProductPageProps(props) {
                       onChange={(e) => setQuantity(e.target.value)}
                     >
                       {[...Array(product.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
+                        <option key={x + 1} value={x}>
+                          {x}
                         </option>
                       ))}
                     </select>
@@ -119,6 +144,49 @@ export default function ProductPageProps(props) {
                 ) : (
                   "none"
                 )}
+              </div>
+              <div>
+                <div>
+                  <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+                    <div className="modal-Box">
+                      <Box sx={style}>
+                        <div>
+                          <h1 style={{ textAlign: "center" }}>
+                            Happy Shopping
+                          </h1>
+                          <h1 style={{ textAlign: "center" }}>
+                            {product.name} Added To Cart
+                          </h1>
+                        </div>
+
+                        <div className="row">
+                          <button
+                            className=" modalButton"
+                            onClick={() => {
+                              history.push("/homePage");
+                            }}
+                          >
+                            Continue Shopping
+                          </button>
+
+                          <button
+                            className=" modalButton"
+                            onClick={() => {
+                              history.push(`/cart/${userId}`);
+                            }}
+                          >
+                            To CheckOut
+                          </button>
+                        </div>
+                      </Box>
+                    </div>
+                  </Modal>
+                </div>
               </div>
             </ul>
           </div>
