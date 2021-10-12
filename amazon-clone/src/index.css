@@ -231,6 +231,7 @@ form textarea {
   padding: 4px;
   outline: none;
   font-size: 1.2em;
+  border-radius: 15px;
   /* background-color: #020202; */
   /* color: #f5ba13; */
   /* font-family: inherit; */

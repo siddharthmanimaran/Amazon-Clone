@@ -17,11 +17,9 @@ export default function ProductPageProps(props) {
     userId: "",
     productId: "",
   });
-  console.log("item--->", item);
   const history = useHistory();
   const [quantity, setQuantity] = useState();
 
-  console.log(quantity);
   useEffect(() => {
     setItems({
       name: product.name,
@@ -47,7 +45,6 @@ export default function ProductPageProps(props) {
         alert("type Something");
         console.log(err);
       });
-    // setItems("");
   }
 
   return (

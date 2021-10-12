@@ -10,10 +10,10 @@ export default function CartPageProps(props) {
   // const[cart,setCart] =useState()
   const { product } = props;
 
-  console.log(product);
   function handleClick() {
     props.onDelete(props.id);
   }
+
   return (
     <div className="row-top">
       <div className="col-2">
@@ -45,7 +45,10 @@ export default function CartPageProps(props) {
                   ))}
                 </select>
               </div> */}
-              <div style={{ color: "gold" }}>₹{product.price}</div>
+              <div className="min-30"> Quantity:{product.qty}</div>
+              <div style={{ color: "gold" }}>
+                ₹{product.price * product.qty}
+              </div>
               <div>
                 <Tooltip title="Delete">
                   <IconButton
