@@ -197,6 +197,22 @@ AmazonRoutes.get("/orders/:userId", async (req, res) => {
   }
 });
 
+AmazonRoutes.route("/delete/:id").delete((req, res) => {
+  console.log("id--->", req.params.id);
+  let id = req.params.id;
+
+  Order.findByIdAndDelete({
+    _id: mongoose.Types.ObjectId(id),
+  })
+    .then((x) => {
+      res.status(200).send("data deleted");
+      console.log("done");
+    })
+    .catch((err) => {
+      res.status(400).send("fail to delete");
+    });
+});
+
 app.use("/Amazon", AmazonRoutes);
 app.use("/oneProduct/:id", AmazonRoutes);
 app.use("/product", AmazonRoutes);
@@ -205,4 +221,5 @@ app.use("/signUp", AmazonRoutes);
 app.use("/logIn", AmazonRoutes);
 app.use("/orders/:productId", AmazonRoutes);
 app.use("/orders/:userId", AmazonRoutes);
+app.use("/delete/:id", AmazonRoutes);
 app.listen(PORT, console.log(`Server started at port ${PORT}`));
