@@ -65,14 +65,14 @@ export default function CartPageProps(props) {
           </li>
         </ul>
       </div>
-      <div className="col-1">
+      {/* <div className="col-1">
         <div className="card card-body">
           <ul>
             <li>
               <h2>
                 Total
-                {/* ({product.reduce((a, c) => a + c.qty, 0)}items):₹
-                {product.reduce((a, c) => a + c.price * c.qty, 0)} */}
+                ({product.reduce((a, c) => a + c.qty, 0)}items):₹
+                {product.reduce((a, c) => a + c.price * c.qty, 0)}
               </h2>
             </li>
 
@@ -80,14 +80,14 @@ export default function CartPageProps(props) {
               <button
                 type="button"
                 className="primary block"
-                // disabled=
+               // disabled=
               >
                 CheckOut
               </button>
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

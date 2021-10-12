@@ -16,11 +16,19 @@ function ShippingPage() {
           //   onChange={handleUser}
           //   value={user.firstName}
         />
-        <label htmlFor="landMark">Phone Number</label>
+        <label htmlFor="phoneNum">Phone Number</label>
         <input
           type="text"
-          name="landMark"
-          placeholder="(optional)"
+          name="phoneNum"
+          placeholder="+91"
+          //   onChange={handleUser}
+          //   value={user.password}
+        />
+        <label htmlFor="email">E-Mail</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="@"
           //   onChange={handleUser}
           //   value={user.password}
         />
