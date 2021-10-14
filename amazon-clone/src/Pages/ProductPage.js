@@ -5,6 +5,7 @@ import axios from "axios";
 export default function ProductPage(props) {
   const products = props.match.params.pId;
   const [product, setProduct] = useState([]);
+
   console.log("prodct--->", product);
 
   useEffect(() => {

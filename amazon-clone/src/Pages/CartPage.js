@@ -11,6 +11,7 @@ import CartPageProps from "../components/CartPageProps";
 export default function CartPage() {
   const [product, setProduct] = useState([]);
   const history = useHistory();
+  const [total, setTotal] = useState([]);
   // const product = data.products.find((x) => x._id === props.match.params.id);
   // const products = props.match.params.id;
   // const qty = props.location.search

@@ -101,8 +101,9 @@ button:hover {
   background-color: black;
   color: white;
 }
-button.primary {
+.primary {
   background-color: gold;
+  width: 100%;
 }
 button.block {
   width: 100%;
@@ -121,6 +122,13 @@ button.delete {
   cursor: pointer;
   color: black;
 }
+.modalButton {
+  width: 48%;
+  margin-top: 10px;
+  color: black;
+  font-size: 14px;
+  background-color: gold;
+}
 
 /* Header  */
 header {
@@ -134,6 +142,17 @@ header a {
   /* text-shadow: 0 0 10px 0 rgb(255, 217, 0); */
   /* text-shadow: 2px 2px rgb(255, 217, 0); */
   padding: 1rem;
+}
+.headerForm {
+  border: none;
+  margin-top: -4px;
+  box-shadow: none;
+  width: 70%;
+  margin-bottom: 0;
+  margin-right: 1px;
+}
+.headerInput {
+  border-radius: 10px;
 }
 a.brand {
   font-size: 3rem;
@@ -262,10 +281,12 @@ form textarea {
 }
 
 /* modal */
-.modalButton {
-  width: 48%;
-  margin-top: 10px;
-  color: black;
-  font-size: 14px;
-  background-color: gold;
+
+.orderBox {
+  width: 40%;
+  padding: 7px;
+  margin: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 0 rgb(255, 217, 0);
+  height: 30rem;
 }

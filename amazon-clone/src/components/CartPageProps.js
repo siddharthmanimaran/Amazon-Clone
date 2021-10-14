@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -10,8 +11,15 @@ export default function CartPageProps(props) {
   // const[cart,setCart] =useState()
   const { product } = props;
 
+  // function onDelete() {
+  //   product.onDelete(product.id);
+  // }
   function handleClick() {
-    props.onDelete(props.id);
+    axios
+      .delete(`http://localhost:4000/Amazon/delete/${product._id}`)
+      .then((res) => {
+        console.log(res.data);
+      });
   }
 
   return (

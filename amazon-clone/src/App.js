@@ -7,6 +7,7 @@ import CartPage from "./Pages/CartPage";
 import LogInPage from "./Pages/LogInPage";
 import SignUpPage from "./Pages/SignUpPage";
 import ShippingPage from "./Pages/ShippingPage";
+import OrderDetails from "./Pages/OrderDetails";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <div className="grid-container">
         <AppBar />
         <main>
+          <Route path="/order" component={OrderDetails} />
           <Route path="/shipping" component={ShippingPage} />
           <Route path="/SignUp" component={SignUpPage} />
           <Route path="/HomePage" component={HomePage} />

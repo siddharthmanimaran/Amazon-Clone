@@ -13,6 +13,21 @@ const Product = require("./models/Products.model");
 const User = require("./models/Users.model");
 const Order = require("./models/Orders.model");
 
+// let mailTransporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "sid28071998@gmail.com",
+//     pass: "28071998",
+//   },
+// });
+
+// let mailDetails = {
+//   from: "sid28071998@gmail.com",
+//   to: "sidsid28071998@gmail.com",
+//   subject: "Test mail",
+//   text: "Hello World!!!!!!!!!",
+// };
+
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -30,7 +45,7 @@ connection.once("open", () => {
 });
 
 AmazonRoutes.post("/Products", async (req, res, next) => {
-  console.log("product added-->", req.body);
+  // console.log("product added-->", req.body);
   try {
     const {
       name,
@@ -67,7 +82,7 @@ AmazonRoutes.post("/Products", async (req, res, next) => {
 AmazonRoutes.get("/product", async (req, res) => {
   try {
     Product.find({}, (err, data) => {
-      console.log("product found-->", data);
+      // console.log("product found-->", data);
       if (err) {
         console.log(err);
       }
@@ -83,7 +98,8 @@ AmazonRoutes.get("/product", async (req, res) => {
 });
 
 AmazonRoutes.post("/signUp", async (req, res) => {
-  console.log(" ", req.body);
+  // console.log(" ", req.body);
+
   const salt = await bcrypt.genSalt(10);
 
   let newuser = new User();
@@ -105,7 +121,7 @@ AmazonRoutes.post("/signUp", async (req, res) => {
 });
 
 AmazonRoutes.route("/logIn").post((req, res) => {
-  console.log("Body--->", req.body);
+  // console.log("Body--->", req.body);
 
   User.find({ userName: req.body.userName }, function (err, user) {
     console.log("------>", user);
@@ -146,7 +162,7 @@ AmazonRoutes.get("/oneProduct/:id", async (req, res) => {
   let id = req.params.id;
   try {
     Product.find({ _id: mongoose.Types.ObjectId(id) }, (err, data) => {
-      console.log("product found-->", data);
+      // console.log("product found-->", data);
       if (err) {
         console.log(err);
       }
@@ -162,7 +178,7 @@ AmazonRoutes.get("/oneProduct/:id", async (req, res) => {
 });
 
 AmazonRoutes.route("/orders/:productId").post(function (req, res) {
-  console.log("added content--->", req.body);
+  // console.log("added content--->", req.body);
   //console.log("id", req.params.userId);
   let orders = new Order();
   orders.name = req.body.name;
@@ -215,19 +231,12 @@ AmazonRoutes.route("/delete/:id").delete((req, res) => {
     });
 });
 
-// let mailTransporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: "sid28071998@gmail.com",
-//     pass: "28071998",
-//   },
-// });
-// let mailDetails = {
-//   from: "sid28071998@gmail.com",
-//   to: "sidsid28071998@gmail.com",
-//   subject: "Test mail",
-//   text: "Hello World!!!!!!!!!",
-// };
+let mailDetails = {
+  from: "sid28071998@gmail.com",
+  to: "sidsid28071998@gmail.com",
+  subject: "Test mail",
+  text: "Hello World!!!!!!!!!",
+};
 
 // mailTransporter.sendMail(mailDetails, function (err, data) {
 //   if (err) {

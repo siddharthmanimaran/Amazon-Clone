@@ -59,14 +59,12 @@ export default function ProductPageProps(props) {
       .post(`http://localhost:4000/Amazon/orders/${product._id}`, item)
       .then((res) => {
         if (res.status === 200) {
-          // alert("added to cart");
-          // history.push("/HomePage");
         } else {
           alert("add something");
         }
       })
       .catch((err) => {
-        // alert("type Something");
+        alert("Please select the quantity");
         console.log(err);
       });
     handleOpen();
@@ -117,32 +115,38 @@ export default function ProductPageProps(props) {
                   </div>
                 </div>
               </li>
-              <li>
-                <div className="row">
-                  <div>Quantity</div>
-                  <div>
-                    <select
-                      value={quantity}
-                      onChange={(e) => setQuantity(e.target.value)}
-                    >
-                      {[...Array(product.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x}>
-                          {x}
-                        </option>
-                      ))}
-                    </select>
+
+              {product.countInStock > 0 ? (
+                <li>
+                  <div className="row">
+                    <div>Quantity</div>
+                    <div>
+                      <select
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                      >
+                        {[...Array(product.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x}>
+                            {x}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
+              ) : (
+                ""
+              )}
+
               <div>
                 {product.countInStock > 0 ? (
                   <li>
-                    <button className="primary block" onClick={addToCart}>
+                    <button className="primary" onClick={addToCart}>
                       Add To Cart
                     </button>
                   </li>
                 ) : (
-                  "none"
+                  ""
                 )}
               </div>
               <div>
