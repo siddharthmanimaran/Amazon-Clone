@@ -6,7 +6,7 @@ body {
   margin: 0;
   height: 100vh;
   font-size: 16px;
-  background-color: black;
+  /* background-color: black; */
   font-family: Helvetica, Arial, sans-serif;
   /* font-family: Courier New, monospace; */
 
@@ -135,7 +135,7 @@ header {
   grid-area: header;
   /* background-color: black; */
   /* border: 1px solid gold; */
-  box-shadow: 0 0 10px 0 rgb(255, 217, 0);
+  box-shadow: 0 0 10px 0 rgb(175, 175, 175);
 }
 header a {
   color: rgb(255, 217, 0);
@@ -153,6 +153,8 @@ header a {
 }
 .headerInput {
   border-radius: 10px;
+  padding-left: 10px;
+  height: 20px;
 }
 a.brand {
   font-size: 3rem;
@@ -289,4 +291,16 @@ form textarea {
   box-sizing: border-box;
   box-shadow: 0 0 10px 0 rgb(255, 217, 0);
   height: 30rem;
+}
+
+.searchBox {
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.5rem;
+  outline: none;
+  float: right;
+  margin-top: -45px;
+
+  margin-right: 136px;
+  box-shadow: 0 0 10px 0 rgb(255, 217, 0);
 }

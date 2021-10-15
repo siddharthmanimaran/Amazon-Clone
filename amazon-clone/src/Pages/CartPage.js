@@ -26,7 +26,7 @@ export default function CartPage() {
 
   let userDetails = JSON.parse(localStorage.getItem("userLogIn"));
   const userId = userDetails._id;
-  console.log("userId--->", userId);
+
   useEffect(() => {
     const cartItems = async () => {
       try {
@@ -35,7 +35,6 @@ export default function CartPage() {
         );
         if (res.data.success) {
           setProduct(res.data.result);
-          console.log(res.data.result);
         } else {
           alert(res.data.message);
         }
@@ -46,6 +45,8 @@ export default function CartPage() {
     cartItems();
   }, [userId]);
 
+  console.log("total--->", product.price * product.qty);
+  console.log("one--->", product.price);
   return (
     <>
       {product.map((data) => (

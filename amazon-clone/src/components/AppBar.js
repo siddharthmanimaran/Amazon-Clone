@@ -4,14 +4,11 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import AccountCircleTwoToneIcon from "@mui/icons-material/AccountCircleTwoTone";
-import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import RedditIcon from "@mui/icons-material/Reddit";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Tooltip from "@mui/material/Tooltip";
-
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { yellow } from "@mui/material/colors";
@@ -40,7 +37,7 @@ export default function AppBar() {
       </div>
 
       <div className="row">
-        <div>
+        {/* <div>
           <form className="headerForm">
             <input
               type="text"
@@ -48,7 +45,7 @@ export default function AppBar() {
               className="headerInput"
             ></input>
           </form>
-        </div>
+        </div> */}
         <a href={`/cart/${userId}`}>
           <ShoppingCartIcon sx={{ fontSize: 20 }} />
           Cart
@@ -57,9 +54,11 @@ export default function AppBar() {
         <React.Fragment>
           <Tooltip title="Account settings">
             <IconButton onClick={handleClick} size="large" sx={{ ml: 2 }}>
-              <AccountCircleOutlinedIcon
-                sx={{ width: 32, height: 32, color: yellow[600] }}
-              ></AccountCircleOutlinedIcon>
+              <div className="AccountIcon">
+                <AccountCircleOutlinedIcon
+                  sx={{ width: 32, height: 32, color: yellow["A700"] }}
+                ></AccountCircleOutlinedIcon>
+              </div>
             </IconButton>
           </Tooltip>
 
